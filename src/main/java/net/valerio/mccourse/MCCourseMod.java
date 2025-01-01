@@ -26,6 +26,7 @@ public class MCCourseMod
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
     // Test change for GIT version 2
+    // Third test change for GIT
     public MCCourseMod() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
