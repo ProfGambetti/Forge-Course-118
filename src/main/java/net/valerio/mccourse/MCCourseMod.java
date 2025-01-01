@@ -27,6 +27,7 @@ public class MCCourseMod
     private static final Logger LOGGER = LogManager.getLogger();
     // Test change for GIT version 2
     // Third test change for GIT
+    // Third committ
     public MCCourseMod() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
