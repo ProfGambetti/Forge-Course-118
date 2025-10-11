@@ -33,8 +33,9 @@ public class MCCourseMod
 
     // Stampa i messaggi di LOG
     private static final Logger LOGGER = LogManager.getLogger();
-
-    // Costruttore della Mod
+    // Test change for GIT version 2
+    // Third test change for GIT
+    // Third committ
     public MCCourseMod() {
 
         // Carico il sistema di eventi Forge, chiamato eventBus
