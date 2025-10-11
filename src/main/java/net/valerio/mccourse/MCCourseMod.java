@@ -43,7 +43,7 @@ public class MCCourseMod
         // Registro items e blocchi
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
-
+        System.out.println("Ho registrato blocchi ed eventi in MCCourseMod.java");
         // Aggiungo il metodo setup, definito più in basso
         eventBus.addListener(this::setup);
 
