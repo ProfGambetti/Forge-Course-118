@@ -1,5 +1,6 @@
 package net.valerio.mccourse.item;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.FormattedText;
 import net.minecraft.network.chat.TextComponent;
@@ -7,18 +8,22 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
 // Creo una nuova classe figlia della classe Item e la chiamo MagicStick (bastone magico)
 public class MagicStick extends Item {
 
     // Uso il costruttore della classe madre
     public MagicStick(Properties props) {
-        super(props);
+        super(props.durability(0));
 
     }
 
@@ -64,6 +69,32 @@ public class MagicStick extends Item {
 
         return InteractionResultHolder.success(stack);
     }
+
+    // Il metodo hurtEnemy è invocato quando si colpisce un essere vivente in Minecraft
+    // Lo riscrivo per fare in modo che il bastone trasformi l'essere vivente in un blocco dorato
+    // quando l'utente preme il tasto sinistro sull'essere vivente
+    @Override
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (!attacker.level.isClientSide) {
+            Level level = attacker.level;
+            BlockPos pos = target.blockPosition();
+
+            // Rimuove l'entità colpita
+            target.discard();
+
+            // Sostituisce con un blocco d'oro
+            level.setBlock(pos, Blocks.GOLD_BLOCK.defaultBlockState(), 3);
+
+            // Messaggio al giocatore
+            if (attacker instanceof Player player) {
+                player.displayClientMessage(new TextComponent("✨ Hai trasformato un nemico in oro!"), true);
+            }
+        }
+
+        // Restituisce true per indicare che l’azione è riuscita
+        return true;
+    }
+
 }
 
 
