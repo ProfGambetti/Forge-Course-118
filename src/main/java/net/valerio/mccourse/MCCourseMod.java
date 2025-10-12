@@ -4,6 +4,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -12,69 +13,62 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.valerio.mccourse.block.ModBlocks;
+import net.valerio.mccourse.item.ModItems;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
-// The value here should match an entry in the META-INF/mods.toml file
+// La MOD_ID usato qui deve essere uguale a quello scritto nel file META-INF/mods.toml
+// La MOD_ID è una stringa scritta in minuscolo e senza spazi
+// L'annotazione @Mod comunica a Forge che questa è la classe principale della MOD
 @Mod(MCCourseMod.MOD_ID)
+
+//
 public class MCCourseMod
 {
+    // Definisce il MOD ID
     public static final String MOD_ID = "mccourse";
 
-    // Directly reference a log4j logger.
+    // Stampa i messaggi di LOG
     private static final Logger LOGGER = LogManager.getLogger();
     // Test change for GIT version 2
     // Third test change for GIT
     // Third committ
     public MCCourseMod() {
-        // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
 
-        // Register ourselves for server and other game events we are interested in
+        // Carico il sistema di eventi Forge, chiamato eventBus
+        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Registro items e blocchi
+        ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
+        System.out.println("Ho registrato blocchi ed eventi in MCCourseMod.java");
+        // Aggiungo il metodo setup, definito più in basso
+        eventBus.addListener(this::setup);
+
+
+        // La Mod si iscrive al bus degli eventi di Minecraft stesso, non solo FORGE
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    // FORGE chiama questo metodo in fase di pre-inizializzazione della mod
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
+        // Stampo semplicemente due messaggi, nel secondo stampa il nome del blocco terra
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-        // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
-    }
+    // FONDAMENTALI:
+    /*
+        MCCourseMod = punto d’ingresso del mod → qui parte tutto.
+        @Mod lega la classe a Forge.
+        MOD_ID è l’identità del mod (univoca).
+        Il costruttore registra blocchi, oggetti ed eventi.
+        Il setup prepara eventuali configurazioni iniziali.
+        Il LOGGER serve a capire cosa succede nel caricamento (debug).
+     */
 
-    private void processIMC(final InterModProcessEvent event)
-    {
-        // some example code to receive and process InterModComms from other mods
-        LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.messageSupplier().get()).
-                collect(Collectors.toList()));
-    }
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
-    }
-
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
-        }
-    }
 }
