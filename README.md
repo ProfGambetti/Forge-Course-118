@@ -1,4 +1,4 @@
-Questo progetto è stato creato dalla classe 4A Informatica.
+Questo progetto è stato creato dalla classe 4Ci Informatica.
 Ogni studente lavora sulla **propria branch** e propone modifiche tramite **pull request**.
 
 ## 🪄 Obiettivo
