@@ -34,6 +34,7 @@ public class MCCourseMod
 public class MCCourseMod //la mod di marco parini
 {
     // Definisce il MOD ID
+    //ciao guys1
     public static final String MOD_ID = "mccourse";
 
     // Stampa i messaggi di LOG
