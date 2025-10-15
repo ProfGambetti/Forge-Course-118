@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 // L'annotazione @Mod comunica a Forge che questa è la classe principale della MOD
 @Mod(MCCourseMod.MOD_ID)
 
-//commento di Stefano Liviero
+//Commento di Stefano Liviero
 public class MCCourseMod
 {
     // Definisce il MOD ID
