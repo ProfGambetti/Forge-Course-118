@@ -1,3 +1,5 @@
+
+//ziad chihab 4CI
 package net.valerio.mccourse;
 
 import net.minecraft.world.level.block.Block;
@@ -25,16 +27,21 @@ import java.util.stream.Collectors;
 // L'annotazione @Mod comunica a Forge che questa è la classe principale della MOD
 @Mod(MCCourseMod.MOD_ID)
 
-//
+//ccommmento di micolRRIGHIii
+//Commento Di Stefano Liviero
 public class MCCourseMod
+//
+public class MCCourseMod //la mod di marco parini
 {
     // Definisce il MOD ID
+    //ciao guys1
     public static final String MOD_ID = "mccourse";
 
     // Stampa i messaggi di LOG
     private static final Logger LOGGER = LogManager.getLogger();
-
-    // Costruttore della Mod
+    // Test change for GIT version 2
+    // Third test change for GIT
+    // Third committ
     public MCCourseMod() {
 
         // Carico il sistema di eventi Forge, chiamato eventBus
