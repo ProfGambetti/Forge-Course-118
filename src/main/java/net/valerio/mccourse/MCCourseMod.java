@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 public class MCCourseMod
 {
     // Definisce il MOD ID
-    //ciao guys
+    //ciao guys1
     public static final String MOD_ID = "mccourse";
 
     // Stampa i messaggi di LOG
