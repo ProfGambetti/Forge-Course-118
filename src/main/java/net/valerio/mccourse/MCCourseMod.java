@@ -27,6 +27,8 @@ import java.util.stream.Collectors;
 
 //Commento Di Stefano Liviero
 public class MCCourseMod
+//
+public class MCCourseMod //la mod di marco parini
 {
     // Definisce il MOD ID
     public static final String MOD_ID = "mccourse";
