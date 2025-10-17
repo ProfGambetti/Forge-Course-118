@@ -33,6 +33,12 @@ public class ModItems {
     // DA NOTARE CHE DEVO CREARE UN OGGETTO DELLA CLASSE MagicStick che ho creato io
     public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+    // Registriamo la nostra spada personalizzata
+    // "knockback_sword" sarà il nome interno dell'item
+    // RegistryObject è un wrapper che ci dà accesso sicuro al nostro item registrato
+    public static final RegistryObject<Item> KNOCKBACK_SWORD = ITEMS.register("knockback_sword",
+            () -> new KnockbackSword()); // Lambda che crea una nuova istanza quando serve
+
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
     {
