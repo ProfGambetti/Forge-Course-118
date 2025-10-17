@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @Mod(MCCourseMod.MOD_ID)
 
 //
-public class MCCourseMod //la mod di marco parini
+public class MCCourseMod // la mod di marco parini
 {
     // Definisce il MOD ID
     public static final String MOD_ID = "mccourse";
