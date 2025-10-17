@@ -43,10 +43,12 @@ public class MCCourseMod //la mod di marco parini
     // Third committ
     public MCCourseMod() {
 
+
         // Carico il sistema di eventi Forge, chiamato eventBus
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Registro items e blocchi
+
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
         System.out.println("Ho registrato blocchi ed eventi in MCCourseMod.java");
