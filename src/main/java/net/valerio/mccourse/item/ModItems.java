@@ -47,4 +47,9 @@ public class ModItems {
     Registrare gli oggetti al gioco → il metodo register(IEventBus eventBus) collega il registro degli oggetti al ciclo di avvio del gioco.
      */
 
+
+    //aggiungendo l'oggetto "Summon whistle"
+    public static final RegistryObject<Item> SUMMON_WHISTLE = ITEMS.register("summon_whistle", () -> new SummonWhistle(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 }
+
+
