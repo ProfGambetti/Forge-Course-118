@@ -35,7 +35,7 @@ public class MCCourseMod //la mod di marco parini
     // Definisce il MOD ID
     //ciao guys1
     public static final String MOD_ID = "mccourse";
-
+//ciao
     // Stampa i messaggi di LOG
     private static final Logger LOGGER = LogManager.getLogger();
     // Test change for GIT version 2
