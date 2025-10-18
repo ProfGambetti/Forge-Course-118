@@ -6,6 +6,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.valerio.mccourse.MCCourseMod;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
@@ -21,7 +22,7 @@ public class ArmaturaCobalto implements ArmorMaterial {
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredient;
 
-    public ArmaturaCobalto () {
+    public ArmaturaCobalto() {
         this.name = "cobalt";
         this.durabilityMultiplier = 25;
         this.enchantmentValue = 15;
@@ -32,12 +33,12 @@ public class ArmaturaCobalto implements ArmorMaterial {
     }
 
     @Override
-    public int getDurabilityForSlot(EquipmentSlot slot) {
+    public int getDurabilityForSlot(@NotNull EquipmentSlot slot) {
         return HEALTH_PER_SLOT[slot.getIndex()] * this.durabilityMultiplier;
     }
 
     @Override
-    public int getDefenseForSlot(EquipmentSlot slot) {
+    public int getDefenseForSlot(@NotNull EquipmentSlot slot) {
         return SLOT_PROTECTIONS[slot.getIndex()];
     }
 
@@ -47,17 +48,17 @@ public class ArmaturaCobalto implements ArmorMaterial {
     }
 
     @Override
-    public SoundEvent getEquipSound() {
+    public @NotNull SoundEvent getEquipSound() {
         return this.sound;
     }
 
     @Override
-    public Ingredient getRepairIngredient() {
+    public @NotNull Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return MCCourseMod.MOD_ID + ":" + this.name;
     }
 
