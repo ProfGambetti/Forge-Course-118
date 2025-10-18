@@ -22,7 +22,7 @@ public class ArmaturaCobalto implements ArmorMaterial {
     private final float knockbackResistance;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    private static final String[] TEXTURE_NAMES = {
+    private static final String[] TEXTURE_NAMES = {         //per visualizzare l'armatura effettiva sul personaggio ci sono 2 layer
             "cobalt_layer_1",  // per elmo, pantaloni, scarpe
             "cobalt_layer_2"   // per corazza
     };
