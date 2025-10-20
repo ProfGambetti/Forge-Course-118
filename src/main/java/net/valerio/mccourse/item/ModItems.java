@@ -46,7 +46,7 @@ public class ModItems {
     Organizzare gli oggetti nel menu creativo → con new Item.Properties().tab(...) si sceglie in quale sezione del menu creativo compaiono.
     Registrare gli oggetti al gioco → il metodo register(IEventBus eventBus) collega il registro degli oggetti al ciclo di avvio del gioco.
      */
-    // Modifica di test
+    // Modifica di test 2
 
     //aggiungendo l'oggetto "Summon whistle"
     public static final RegistryObject<Item> SUMMON_WHISTLE = ITEMS.register("summon_whistle", () -> new SummonWhistle(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
