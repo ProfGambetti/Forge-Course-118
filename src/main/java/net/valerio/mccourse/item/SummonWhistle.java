@@ -75,6 +75,7 @@ public class SummonWhistle extends Item {
      */
 
 
+    // array che uso per spawnare randomicamente 3 mob attorno il giocatore
     private static final EntityType<?>[] PASSIVE_MOBS = {
             EntityType.COW,
             EntityType.SHEEP,
@@ -85,15 +86,16 @@ public class SummonWhistle extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if (!level.isClientSide) { // only run on server
-            Random random = new Random();
+        if (!level.isClientSide) {
+            Random random = new Random();//creazione di un oggetto randomico con costruttore vuoto
 
-            // spawn 3 random passive mobs
+            // Spawna 3 mob
             for (int i = 0; i < 3; i++) {
-                EntityType<?> mobType = PASSIVE_MOBS[random.nextInt(PASSIVE_MOBS.length)];
+                EntityType<?> mobType = PASSIVE_MOBS[random.nextInt(PASSIVE_MOBS.length)]; //sceglie 3 mob passivi tra l'array di mob passivi
                 Mob mob = (Mob) mobType.create(level);
                 if (mob != null) {
-                    mob.moveTo(player.getX() + random.nextInt(5) - 2,
+                    mob.moveTo(player.getX() + random.nextInt(5) - 2, //le seguenti 3 righe descrivono a quanti blocchi di
+                                                                                 // distanza spawnano i mob dal giocatore
                             player.getY(),
                             player.getZ() + random.nextInt(5) - 2,
                             0, 0);
