@@ -88,12 +88,11 @@ public class MagicStick extends Item {
             world.addFreshEntity(projectile);
 
             // Aggiungi un cooldown per evitare spam
-            player.getCooldowns().addCooldown(this, 20); // 1 secondo di cooldown
+            player.getCooldowns().addCooldown(this, 0); // 0
+            // cooldown
         }
 
-        if (world.isClientSide) {
-            player.displayClientMessage(new TextComponent("Hai sparato un incantesimo magico!"), false);
-        }
+
 
         return InteractionResultHolder.success(stack);
     }

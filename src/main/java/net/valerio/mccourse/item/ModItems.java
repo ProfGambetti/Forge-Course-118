@@ -7,7 +7,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.valerio.mccourse.MCCourseMod;
-
+import net.valerio.mccourse.item.Hamburger;
+import net.valerio.mccourse.item.MagicStick;
 // ModItems ha i seguenti scopi:
 //     Definisce tutti i nuovi elementi della mod (lingotti, polveri, cibi, strumenti, etc.)
 //     Registra tutti i nuovi elementi della mod
@@ -33,18 +34,19 @@ public class ModItems {
     // DA NOTARE CHE DEVO CREARE UN OGGETTO DELLA CLASSE MagicStick che ho creato io
     public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+    // REGISTRAZIONE DEL NUOVO HAMBURGER
+    // Crea un elemento del registro chiamato HAMBURGER
+    // Utilizza la classe Hamburger personalizzata che abbiamo creato
+    // Viene aggiunto al tab "Cibo" (TAB_FOOD) del menu creativo
+
+    public static final RegistryObject<Item> HAMBURGER = ITEMS.register("hamburger",
+            () -> new Hamburger());  // Solo questo, niente Properties qui
+
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
     {
         ITEMS.register(eventBus);
     }
 
-    /*
-    FONDAMENTALI:
-    Creare un registro per gli oggetti → DeferredRegister<Item> serve per dire a Minecraft: “Qui registrerò i miei oggetti”.
-    Definire nuovi oggetti → ogni RegistryObject<Item> (es. COBALT_INGOT, COBALT_NUGGET) rappresenta un nuovo oggetto del gioco.
-    Organizzare gli oggetti nel menu creativo → con new Item.Properties().tab(...) si sceglie in quale sezione del menu creativo compaiono.
-    Registrare gli oggetti al gioco → il metodo register(IEventBus eventBus) collega il registro degli oggetti al ciclo di avvio del gioco.
-     */
 
 }
