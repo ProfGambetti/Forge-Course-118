@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 public class ArmaturaCobalto implements ArmorMaterial {
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
-    private static final int[] SLOT_PROTECTIONS = new int[]{3, 6, 8, 3};
+    private static final int[] SLOT_PROTECTIONS = new int[]{3, 6, 8, 3};    //Protezione data dai 4 item
 
     private final String name;
     private final int durabilityMultiplier;
