@@ -1,3 +1,5 @@
+
+//ziad chihab 4CI
 package net.valerio.mccourse;
 
 import net.minecraft.world.level.block.Block;
@@ -26,7 +28,10 @@ import java.util.stream.Collectors;
 @Mod(MCCourseMod.MOD_ID)
 
 //ccommmento di micolRRIGHIii
+//Commento Di Stefano Liviero
 public class MCCourseMod
+//
+public class MCCourseMod //la mod di marco parini
 {
     // Definisce il MOD ID
     public static final String MOD_ID = "mccourse";
