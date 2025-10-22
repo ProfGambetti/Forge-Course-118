@@ -17,10 +17,66 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.level.Explosion;
 
-public class DeathSickle extends Item{
+
+public class DeathSickle extends Item {
 
     public DeathSickle(Properties props) {
         super(props.durability(0));
+    }
+
+    @Override
+    public InteractionResult useOn(UseOnContext context) {
+
+        Player player = context.getPlayer();
+        if (player == null) return InteractionResult.FAIL;
+
+        if (context.getLevel().isClientSide) {
+            player.displayClientMessage(new TextComponent("Hai usato la falce della morte"), false);
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (world.isClientSide) {
+            player.displayClientMessage(new TextComponent("Hai usato la falce della morte!"), false);
+        }
+        return InteractionResultHolder.success(stack);
+
+    }
+
+    @Override
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        if (!attacker.level.isClientSide) {
+            Level level = attacker.level;
+            BlockPos pos = target.blockPosition();
+
+            int durata = 200; // 10 secondi
+            int livello = 1;  // Levitation II
+
+            MobEffectInstance lev = new MobEffectInstance(MobEffects.LEVITATION, durata, livello);
+            boolean applied = target.addEffect(lev);
+
+            level.explode(
+                    target,                   // entità che causa l’esplosione
+                    target.getX(),             // coordinata X
+                    target.getY(),             // coordinata Y
+                    target.getZ(),             // coordinata Z
+                    3.0F,                      // potenza dell’esplosione (4.0 = TNT)
+                    Explosion.BlockInteraction.NONE        // tipo di esplosione (TNT, NONE, DESTROY)
+            );
+
+            if (attacker instanceof Player player) {
+                player.displayClientMessage(new TextComponent("✨ Hai fatto levitare ed esplodere il nemico ✨"), true);
+            }
+
+        }
+        return true;
     }
 }
