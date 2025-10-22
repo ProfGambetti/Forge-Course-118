@@ -1,5 +1,6 @@
 package net.valerio.mccourse.item;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -13,6 +14,7 @@ import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 
+import java.util.List;
 import java.util.Random;
 
 public class Summon_whistle_lvl2 extends Item{
@@ -21,6 +23,10 @@ public class Summon_whistle_lvl2 extends Item{
         super(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT).stacksTo(1));
     }
 
+
+
+    // durata di vita dei mob evocati in tick (20 tick = 1 secondo)
+    private static final long LIFETIME_TICKS = 20L * 20L; // 20 secondi
 
 
     private static final EntityType<?>[] HOSTILE_MOBS = {
@@ -69,4 +75,29 @@ public class Summon_whistle_lvl2 extends Item{
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide());
     }
 
+
+
+
+    // ================================
+    // 🔹 Metodo da chiamare ogni tick per gestire il despawn
+    // ================================
+    public static void tickDespawn(Level level) {
+        if (level.isClientSide) return;
+
+        long gameTime = level.getGameTime();
+
+        // ottiene tutti i mob nel mondo
+        List<Mob> mobs = level.getEntitiesOfClass(Mob.class, level.getWorldBorder().getCollisionShape().bounds());
+
+        for (Mob mob : mobs) {
+            if (mob.getTags().contains("summoned_by_whistle")) {
+                long spawnTime = mob.getPersistentData().getLong("spawn_time");
+
+                // se sono passati più di 20 secondi (400 tick)
+                if (gameTime - spawnTime > LIFETIME_TICKS) {
+                    mob.discard(); // rimuove l’entità dal mondo
+                }
+            }
+        }
+    }
 }
