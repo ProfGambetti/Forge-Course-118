@@ -1,5 +1,6 @@
 package net.valerio.mccourse.item;
 
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
@@ -14,9 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class MagicLanternItem extends Item {
-
-    // la luce dinamica in realta funzione+a attraverso un blocco luminoso invisibile che viene creato sopra la
+public class MagicLanternItem extends Item
+{
+    // la luce dinamica in realta funziona attraverso un blocco luminoso invisibile che viene creato sopra la
     //testa del giocatore, quindi è necessario tracciare il giocatore per sapere dove piazzarlo, questa riga si
     //di questo
     private final Map<UUID, Integer> immuneMap = new HashMap<>();
@@ -51,9 +52,11 @@ public class MagicLanternItem extends Item {
         BlockPos currentPos = player.blockPosition().above();
 
 // Rimuove il vecchio blocco luce se esiste
-        if (lastLightPos.containsKey(playerId)) {
+        if (lastLightPos.containsKey(playerId))
+        {
             BlockPos oldPos = lastLightPos.get(playerId);
-            if (!oldPos.equals(currentPos) && level.getBlockState(oldPos).getBlock() == Blocks.LIGHT) {
+            if (!oldPos.equals(currentPos) && level.getBlockState(oldPos).getBlock() == Blocks.LIGHT)
+            {
                 level.removeBlock(oldPos, false);
             }
         }
@@ -94,8 +97,10 @@ public class MagicLanternItem extends Item {
         if (stack.getDamageValue() >= stack.getMaxDamage())
         {
             // Rimuove anche l’ultimo blocco luce
+            boolean text = true;
             BlockPos last = lastLightPos.remove(player.getUUID());
-            if (last != null && level.getBlockState(last).getBlock() == Blocks.LIGHT) {
+            if (last != null && level.getBlockState(last).getBlock() == Blocks.LIGHT)
+            {
                 level.removeBlock(last, false);
             }
 
@@ -104,12 +109,11 @@ public class MagicLanternItem extends Item {
             player.broadcastBreakEvent(player.getUsedItemHand());
 
             // Messaggio nella chat quando l'item si rompe
-            if (!level.isClientSide()) {
-                        player.displayClientMessage(new net.minecraft.network.chat.TextComponent("Fiamma spenta!"), true);
-
+            if (text)
+            {
+                player.displayClientMessage(new TextComponent("La fiamma si è spenta!"), true);
             }
         }
-
-
     }
 }
+

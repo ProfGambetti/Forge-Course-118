@@ -58,7 +58,7 @@ public class ModItems {
         private final Map<UUID, Integer> immuneMap = new HashMap<>();
         public MagicLanternItem(Properties props)
         {
-            super(props); // nessun setMaxDamage qui
+            super(props);
         }
 
         public static final RegistryObject<Item> MAGIC_LANTERN = ITEMS.register("magic_lantern",
