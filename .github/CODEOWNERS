@@ -1,2 +1,14 @@
-# Tutti i file del repository richiedono approvazione del docente
+# Ogni studente può approvare pull requests di altri studenti e fare merge
+* Uno studente NON può approvare le proprie pull requests
+* Il docente ha gli stessi diritti amministrativi sul codice degli studenti
 *   @ProfGambetti
+*   @AndreaBalest
+*   @ChristianRizzi9
+*   @FrancescoLacava
+*   @gr33ndragon0806-afk
+*   @mech0808
+*   @micol-righi
+*   @Pippo0o
+*   @shmikix
+*   @steveliv2008-byte
+*   @tinaxxz
