@@ -6,7 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-//commit and push
+//commit and
 @Mod(YoYoMod.MOD_ID)
 public class YoYoMod {
     public static final String MOD_ID = "yoyo";
