@@ -1,5 +1,5 @@
 package net.valerio.mccourse.item;
-
+//classe armatura cobalto
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EquipmentSlot;
