@@ -17,38 +17,90 @@ public class MagicSword extends Item {
         super(props.durability(500));
     }
 
-    // Metodo per il click destro su un'entità (freeze)
+    // Metodo per il click destro su un'entità (FREEZE COMPLETO)
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (!player.level.isClientSide) {
-            // Applica effetti di freeze
-            target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 255));
-            target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 255));
+            // APPLICA EFFETTO FREEZE COMPLETO
+            target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 255)); // Livello 255 = completamente immobile
+            target.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 255)); // Non può scavare
+            target.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100, 0)); // Cecità per effetto visivo
+            target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0)); // Illuminato per vedere meglio
+
+            // BLOCCA COMPLETAMENTE IL MOVIMENTO
             target.setDeltaMovement(0, 0, 0);
+            target.setNoGravity(true); // Sospeso in aria come congelato
+
+            // IMPEDISCE ALL'ENTITÀ DI AGIRE
+            target.setSilent(true); // Silenziosa
+
+            // PARTICOLARE EFFETTO VISIVO - ghiaccio intorno
+            target.setTicksFrozen(200); // Effetto visivo di congelamento
 
             // Messaggio al giocatore
-            player.displayClientMessage(new net.minecraft.network.chat.TextComponent("❄️ Hai congelato il mob!"), true);
+            player.displayClientMessage(new net.minecraft.network.chat.TextComponent("❄️ Hai congelato completamente il mob!"), true);
 
-            // Danno magico leggero
+            // Danno magico leggero per feedback
             target.hurt(net.minecraft.world.damagesource.DamageSource.MAGIC, 1.0F);
+
+            // PROGRAMMA LO SCONGELAMENTO AUTOMATICO dopo 5 secondi
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
+                        @Override
+                        public void run() {
+                            if (target.isAlive()) {
+                                unfreezeEntity(target);
+                            }
+                        }
+                    },
+                    5000 // 5 secondi
+            );
         }
 
         return InteractionResult.sidedSuccess(player.level.isClientSide);
     }
 
-    // Metodo per l'attacco (click sinistro)
+    // Metodo per scongelare l'entità
+    private void unfreezeEntity(LivingEntity target) {
+        if (!target.level.isClientSide) {
+            // RIMUOVI TUTTI GLI EFFETTI DI FREEZE
+            target.removeEffect(MobEffects.MOVEMENT_SLOWDOWN);
+            target.removeEffect(MobEffects.DIG_SLOWDOWN);
+            target.removeEffect(MobEffects.BLINDNESS);
+            target.removeEffect(MobEffects.GLOWING);
+
+            // RIPRISTINA IL MOVIMENTO
+            target.setNoGravity(false);
+            target.setSilent(false);
+
+            // SOLO DANNO LEGGERO AL RISCALDAMENTO (SENZA FUOCO)
+            target.hurt(net.minecraft.world.damagesource.DamageSource.MAGIC, 2.0F);
+        }
+    }
+
+    // Metodo per l'attacco (click sinistro) - SOLO FUOCO QUANDO ATTACCHI
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!attacker.level.isClientSide) {
-            // Applica danni normali
-            target.hurt(net.minecraft.world.damagesource.DamageSource.mobAttack(attacker), 6.0F);
+            // Se il bersaglio è congelato, rompi il ghiaccio con più danni
+            boolean wasFrozen = target.hasEffect(MobEffects.MOVEMENT_SLOWDOWN) &&
+                    target.getEffect(MobEffects.MOVEMENT_SLOWDOWN).getAmplifier() == 255;
 
-            // Applica fuoco
-            target.setSecondsOnFire(5);
+            if (wasFrozen) {
+                // DANNI EXTRA SE ERA CONGELATO
+                target.hurt(net.minecraft.world.damagesource.DamageSource.mobAttack(attacker), 12.0F);
+                unfreezeEntity(target);
+                if (attacker instanceof Player player) {
+                    player.displayClientMessage(new net.minecraft.network.chat.TextComponent("💥 Hai frantumato il mob congelato!"), true);
+                }
+            } else {
+                // ATTACCO NORMALE CON FUOCO
+                target.hurt(net.minecraft.world.damagesource.DamageSource.mobAttack(attacker), 6.0F);
+                target.setSecondsOnFire(5); // 🔥 SOLO QUI APPLICA IL FUOCO
 
-            // Messaggio al giocatore
-            if (attacker instanceof Player player) {
-                player.displayClientMessage(new net.minecraft.network.chat.TextComponent("🔥 Hai attaccato e infuocato il nemico!"), true);
+                if (attacker instanceof Player player) {
+                    player.displayClientMessage(new net.minecraft.network.chat.TextComponent("🔥 Hai attaccato e infuocato il nemico!"), true);
+                }
             }
 
             // Consuma durabilità
@@ -66,7 +118,7 @@ public class MagicSword extends Item {
         ItemStack stack = player.getItemInHand(hand);
 
         if (world.isClientSide) {
-            player.displayClientMessage(new net.minecraft.network.chat.TextComponent("Spada Magica equipaggiata - Click destro per congelare, sinistro per attaccare con fuoco!"), true);
+            player.displayClientMessage(new net.minecraft.network.chat.TextComponent("Spada Magica - Click destro: Congela | Click sinistro: Attacca con fuoco"), true);
         }
 
         return InteractionResultHolder.success(stack);
