@@ -33,11 +33,22 @@ public class ModItems {
     // DA NOTARE CHE DEVO CREARE UN OGGETTO DELLA CLASSE MagicStick che ho creato io
     public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+
+
+    //aggiungendo l'oggetto "Summon whistle"
+    public static final RegistryObject<Item> SUMMON_WHISTLE = ITEMS.register("summon_whistle", () -> new SummonWhistle(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    //aggiungendo l'oggetto "Summon whistle"
+    public static final RegistryObject<Item> SUMMON_WHISTLE_LVL2 = ITEMS.register("summon_whistle_lvl2", () -> new Summon_whistle_lvl2(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+
+
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
     {
         ITEMS.register(eventBus);
     }
+
 
     /*
     FONDAMENTALI:
@@ -46,14 +57,6 @@ public class ModItems {
     Organizzare gli oggetti nel menu creativo → con new Item.Properties().tab(...) si sceglie in quale sezione del menu creativo compaiono.
     Registrare gli oggetti al gioco → il metodo register(IEventBus eventBus) collega il registro degli oggetti al ciclo di avvio del gioco.
      */
-    // Modifica di test 2
-
-    //aggiungendo l'oggetto "Summon whistle"
-    public static final RegistryObject<Item> SUMMON_WHISTLE = ITEMS.register("summon_whistle", () -> new SummonWhistle(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-
-
-    //aggiungendo l'oggetto "Summon whistle"
-    public static final RegistryObject<Item> SUMMON_WHISTLE_LVL2 = ITEMS.register("summon_whistle_lvl2", () -> new Summon_whistle_lvl2(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 }
 

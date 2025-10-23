@@ -34,46 +34,6 @@ public class SummonWhistle extends Item {
     // in questo caso riscivo il metodo useOn che viene chiamato quando il player
     // preme il tasto destro su un blocco mentre utilizza l'oggetto MagicStick
 
-    @Override
-    public InteractionResult useOn(UseOnContext context) {
-        // creo un oggetto di tipo player che contenga l'interazione appena avvenuta
-        // context contiene tutte le informazioni sull'interazione appena avvenuta
-        // chi ha cliccato (Player), su quale blocco (BlockPos), in quale mondo (Level), su quale lato del blocco (Direction)
-        // etc. etc.
-
-        System.out.println("Sto usando il metodo useOn"); // Questo messaggio comparirà nella console della finestra RUN di Intellij
-
-        // context contiene tutte le informazioni sull’interazione: chi ha cliccato (Player), su quale blocco (BlockPos)
-        // il lato del blocco (Direction), nel mondo (Level), etc.
-
-        Player player = context.getPlayer(); // Recupera l’oggetto Player che ha effettuato l’interazione dal contesto
-        if (player == null) return InteractionResult.FAIL; // sicurezza
-
-        // Mostro il messaggio lato client
-        if (context.getLevel().isClientSide) {
-            player.displayClientMessage(new TextComponent("Hai usato il bastone magico"), false);
-        }
-
-        return InteractionResult.SUCCESS;
-        // Il metodo useOn ritorna il tipo InteractionResult che può assumere i valori SUCCESS, FAIL, PASS
-    }
-
-
-    /*
-    // Il metodo use è invece invocato quando si clicca con il tasto destro nell'aria
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand)
-    {
-        System.out.println("Sto usando il metodo use");
-        ItemStack stack = player.getItemInHand(hand);
-        if (world.isClientSide) {
-            player.displayClientMessage(new TextComponent("Hai usato il bastone magico!"), false);
-        }
-
-        return InteractionResultHolder.success(stack);
-    }
-     */
-
 
     // array che uso per spawnare randomicamente 3 mob attorno il giocatore
     private static final EntityType<?>[] PASSIVE_MOBS = {
