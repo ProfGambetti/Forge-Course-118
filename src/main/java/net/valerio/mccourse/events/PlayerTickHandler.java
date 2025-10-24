@@ -5,6 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.valerio.mccourse.item.MagicLanternItem;
 
 @Mod.EventBusSubscriber
@@ -13,11 +14,19 @@ public class PlayerTickHandler {
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent event) {
         Player player = event.player;
-        ItemStack mainHand = player.getMainHandItem();
+        Level level = player.getLevel(); // prendi il livello dal player
 
-        // Controlla se il giocatore tiene in mano la MagicLantern
+        // Main hand
+        ItemStack mainHand = player.getMainHandItem();
         if (mainHand.getItem() instanceof MagicLanternItem lantern) {
-            lantern.onHeldTick(player.level, player, mainHand);
+            lantern.onHeldTick(level, player, mainHand);
+        }
+
+        // Offhand (mano secondaria / slot scudo)
+        ItemStack offhand = player.getOffhandItem();
+        if (offhand.getItem() instanceof MagicLanternItem lantern) {
+            lantern.onHeldTick(level, player, offhand);
         }
     }
 }
+
