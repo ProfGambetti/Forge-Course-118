@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "C": {
+      "item": "mccourse:cobalt_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "mccourse:cobalt_pickaxe"
+  }
+}
