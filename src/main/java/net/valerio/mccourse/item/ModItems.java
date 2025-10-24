@@ -39,7 +39,7 @@ public class ModItems {
         ITEMS.register(eventBus);
     }
 
-    /*
+    /*g
     FONDAMENTALI:
     Creare un registro per gli oggetti → DeferredRegister<Item> serve per dire a Minecraft: “Qui registrerò i miei oggetti”.
     Definire nuovi oggetti → ogni RegistryObject<Item> (es. COBALT_INGOT, COBALT_NUGGET) rappresenta un nuovo oggetto del gioco.
