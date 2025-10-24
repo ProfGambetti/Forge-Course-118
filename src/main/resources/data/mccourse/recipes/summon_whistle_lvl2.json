@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " BI",
+    " E ",
+    "   "
+  ],
+  "key": {
+    "B": { "item": "minecraft:bone" },
+    "I": { "item": "minecraft:iron_ingot" },
+    "E": { "item": "minecraft:ender_pearl" }
+  },
+  "result": {
+    "item": "mccourse:summon_whistle_lvl2",
+    "count": 1
+  }
+}

@@ -33,11 +33,21 @@ public class ModItems {
     // DA NOTARE CHE DEVO CREARE UN OGGETTO DELLA CLASSE MagicStick che ho creato io
     public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+
+
+    //aggiungendo l'oggetto "Summon whistle"
+    public static final RegistryObject<Item> SUMMON_WHISTLE = ITEMS.register("summon_whistle", () -> new SummonWhistle(new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
+
+    //aggiungendo l'oggetto "Summon whistle"
+    public static final RegistryObject<Item> SUMMON_WHISTLE_LVL2 = ITEMS.register("summon_whistle_lvl2", () -> new Summon_whistle_lvl2(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
+
+
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
     {
         ITEMS.register(eventBus);
     }
+
 
     /*
     FONDAMENTALI:
@@ -48,3 +58,5 @@ public class ModItems {
      */
 
 }
+
+

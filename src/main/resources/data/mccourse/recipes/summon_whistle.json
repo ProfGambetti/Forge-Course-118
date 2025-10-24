@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " FI",
+    " S ",
+    "   "
+  ],
+  "key": {
+    "F": { "item": "minecraft:feather" },
+    "I": { "item": "minecraft:iron_ingot" },
+    "S": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "mccourse:summon_whistle",
+    "count": 1
+  }
+}
