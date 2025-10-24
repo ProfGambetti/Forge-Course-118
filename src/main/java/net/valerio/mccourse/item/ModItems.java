@@ -60,11 +60,10 @@ public class ModItems {
         {
             super(props);
         }
-
-        public static final RegistryObject<Item> MAGIC_LANTERN = ITEMS.register("magic_lantern",
-                () -> new net.valerio.mccourse.item.MagicLanternItem(new Item.Properties().stacksTo(1).durability(36000)));
-
     }
 
+    public static final RegistryObject<Item> FIRE_POWDER =
+            ITEMS.register("fire_powder",
+                    () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 }

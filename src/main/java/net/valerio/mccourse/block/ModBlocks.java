@@ -29,6 +29,17 @@ public class ModBlocks {
     // Lo si inserisce nella scheda VARI (TAB_MISC) del menu creativo
     public static final RegistryObject<Block> COBALT_BLOCK = registerBlock("cobalt_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(5f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
 
+
+    // FIRE_BLOCK - emette luce e droppa fire_powder
+    public static final RegistryObject<Block> FIRE_BLOCK =
+            registerBlock("fire_block",
+                    () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                            .strength(2.0f, 3.0f) // blocco facile da rompere
+                            .lightLevel((state) -> 15) // emette luce
+                            .requiresCorrectToolForDrops()),
+                    CreativeModeTab.TAB_MISC);
+
+
     // Registra il blocco
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
@@ -45,6 +56,10 @@ public class ModBlocks {
     public static void register(IEventBus eventBus) {
     BLOCKS.register(eventBus);
     }
+
+    public static final RegistryObject<Item> FIRE_POWDER =
+            ModItems.ITEMS.register("fire_powder",
+                    () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     /*
     FONDAMENTALI:
