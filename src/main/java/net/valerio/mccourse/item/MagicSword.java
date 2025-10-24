@@ -53,7 +53,7 @@ public class MagicSword extends Item {
                             }
                         }
                     },
-                    5000 // 5 secondi
+                    10000 // 10 secondi
             );
         }
 
