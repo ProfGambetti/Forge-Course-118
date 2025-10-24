@@ -1,4 +1,4 @@
-package net.valerio.mccourse.yoyo.item;
+package net.valerio.mccourse.item;
 
 import net.valerio.mccourse.yoyo.entity.YoYoEntity;
 import net.minecraft.world.InteractionHand;

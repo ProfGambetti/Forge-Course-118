@@ -1,7 +1,7 @@
 package net.valerio.mccourse.yoyo.registry;
 
 import net.valerio.mccourse.yoyo.YoYoMod;
-import net.valerio.mccourse.yoyo.item.YoYoItem;
+import net.valerio.mccourse.item.YoYoItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

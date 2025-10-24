@@ -32,7 +32,7 @@ public class ModItems {
 
     // DA NOTARE CHE DEVO CREARE UN OGGETTO DELLA CLASSE MagicStick che ho creato io
     public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-
+    public static final RegistryObject<Item> YOYO = ITEMS.register("yoyo", () -> new YoYoItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
     {
