@@ -1,7 +1,7 @@
-package net.valentina.mod.yoyo.entity;
+package net.valerio.mccourse.yoyo.entity;
 
-import net.valentina.mod.yoyo.registry.ModEntityTypes;
-import net.valentina.mod.yoyo.registry.ModItems;
+import net.valerio.mccourse.yoyo.registry.ModEntityTypes;
+import net.valerio.mccourse.yoyo.registry.ModItems;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

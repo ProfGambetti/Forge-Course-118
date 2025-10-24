@@ -1,4 +1,4 @@
-package net.valentina.mod.yoyo.registry;
+package net.valerio.mccourse.yoyo.registry;
 
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

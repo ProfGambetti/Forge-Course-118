@@ -1,7 +1,7 @@
-package net.valentina.mod.yoyo.registry;
+package net.valerio.mccourse.yoyo.registry;
 
-import net.valentina.mod.yoyo.YoYoMod;
-import net.valentina.mod.yoyo.entity.YoYoEntity;
+import net.valerio.mccourse.yoyo.YoYoMod;
+import net.valerio.mccourse.yoyo.entity.YoYoEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;

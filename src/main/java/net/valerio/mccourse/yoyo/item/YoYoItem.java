@@ -1,6 +1,6 @@
-package net.valentina.mod.yoyo.item;
+package net.valerio.mccourse.yoyo.item;
 
-import net.valentina.mod.yoyo.entity.YoYoEntity;
+import net.valerio.mccourse.yoyo.entity.YoYoEntity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
