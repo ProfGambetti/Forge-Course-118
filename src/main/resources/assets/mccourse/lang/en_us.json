@@ -3,5 +3,8 @@
   "item.mccourse.cobalt_ingot": "Cobalt Ingot",
   "item.mccourse.cobalt_nugget": "Cobalt Nugget",
   "item.mccourse.magic_stick": "Magic Stick",
-  "item.mccourse.magic_stick.used": "Hai usato il bastone magico"
+  "item.mccourse.magic_stick.used": "Hai usato il bastone magico",
+  "item.mccourse.magic_lantern": "Magic lantern",
+  "item.mccourse.fire_powder": "Fire powder",
+  "item.mccourse.fire block": "Fire block"
 }

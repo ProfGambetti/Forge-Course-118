@@ -13,6 +13,8 @@ import net.minecraftforge.registries.RegistryObject;
 import net.valerio.mccourse.MCCourseMod;
 import net.valerio.mccourse.item.ModItems;
 
+
+
 import java.util.function.Supplier;
 // ModBlocks ha i seguenti scopi:
 //       Registra tutti i blocchi della MOD
@@ -34,10 +36,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> FIRE_BLOCK =
             registerBlock("fire_block",
                     () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
-                            .strength(2.0f, 3.0f) // blocco facile da rompere
-                            .lightLevel((state) -> 15) // emette luce
-                            .requiresCorrectToolForDrops()),
+                            .strength(1.0f) // durezza
+                            .lightLevel((state) -> 15)),  // luce
                     CreativeModeTab.TAB_MISC);
+
 
 
     // Registra il blocco
@@ -57,9 +59,6 @@ public class ModBlocks {
     BLOCKS.register(eventBus);
     }
 
-    public static final RegistryObject<Item> FIRE_POWDER =
-            ModItems.ITEMS.register("fire_powder",
-                    () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     /*
     FONDAMENTALI:
