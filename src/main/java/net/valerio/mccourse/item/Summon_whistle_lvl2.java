@@ -74,30 +74,4 @@ public class Summon_whistle_lvl2 extends Item{
         }
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide());
     }
-
-
-
-
-    // ================================
-    // 🔹 Metodo da chiamare ogni tick per gestire il despawn
-    // ================================
-    public static void tickDespawn(Level level) {
-        if (level.isClientSide) return;
-
-        long gameTime = level.getGameTime();
-
-        // ottiene tutti i mob nel mondo
-        List<Mob> mobs = level.getEntitiesOfClass(Mob.class, level.getWorldBorder().getCollisionShape().bounds());
-
-        for (Mob mob : mobs) {
-            if (mob.getTags().contains("summoned_by_whistle")) {
-                long spawnTime = mob.getPersistentData().getLong("spawn_time");
-
-                // se sono passati più di 20 secondi (400 tick)
-                if (gameTime - spawnTime > LIFETIME_TICKS) {
-                    mob.discard(); // rimuove l’entità dal mondo
-                }
-            }
-        }
-    }
 }
