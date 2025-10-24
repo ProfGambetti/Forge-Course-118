@@ -35,7 +35,7 @@ public class MCCourseMod //la mod di marco parini
     // Definisce il MOD ID
     //ciao guys1
     public static final String MOD_ID = "mccourse";
-
+//ciao
     // Stampa i messaggi di LOG
     private static final Logger LOGGER = LogManager.getLogger();
     // Test change for GIT version 2
@@ -43,10 +43,12 @@ public class MCCourseMod //la mod di marco parini
     // Third committ
     public MCCourseMod() {
 
+
         // Carico il sistema di eventi Forge, chiamato eventBus
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Registro items e blocchi
+
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
         System.out.println("Ho registrato blocchi ed eventi in MCCourseMod.java");
