@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "mccourse:block/cobalt_block"
+    "all": "mccourse:block/cobalt_ore"
   }
 }

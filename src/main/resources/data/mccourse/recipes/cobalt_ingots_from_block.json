@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "mccourse:cobalt_block"
+      "item": "mccourse:block_of_cobalt"
     }
   ],
   "result": {

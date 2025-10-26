@@ -7,44 +7,46 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.valerio.mccourse.MCCourseMod;
+import net.valerio.mccourse.util.ModTiers;
+import net.valerio.mccourse.item.CobaltPickaxe;
+import net.valerio.mccourse.item.CobaltSword;
 
-// ModItems ha i seguenti scopi:
-//     Definisce tutti i nuovi elementi della mod (lingotti, polveri, cibi, strumenti, etc.)
-//     Registra tutti i nuovi elementi della mod
-//     Collega gli oggetti al sistema degli eventi FORGE chiamato EVENT BUS
+// ModItems gestisce tutti gli item della mod e li registra al gioco
 public class ModItems {
 
-    // Crea un registro di oggetti per la MOD all'interno del registro globale di Minecraft
-    // MOD_ID è una stringa univoca della MOD scelta dal modder
-    // che deve essere presenta nel file mods.toml
-    // tutta minuscola e senza spazi
+    // Registro globale degli item della mod
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, MCCourseMod.MOD_ID);
 
-    // Le prossime due istruzioni creano due elementi del registro, due ITEM
-    // chiamati COBALT_INGOT e COBALT_NUGGET
-    // Item.Properties ne definisce le caratteristiche
-    // Sono aggiunte al tab "Vari" (TAB_MISC) del menu creativo
-    // Il menù creativo è il pannello degli oggetti della modalità creativa di Minecraft
-    public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    // Lingotto di cobalto
+    public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot",
+            () -> new Item(new Item.Properties().tab(MCCourseMod.COURSE_TAB)));
 
-    public static final RegistryObject<Item> COBALT_NUGGET = ITEMS.register("cobalt_nugget", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    // Nugget di cobalto
+    public static final RegistryObject<Item> COBALT_NUGGET = ITEMS.register("cobalt_nugget",
+            () -> new Item(new Item.Properties().tab(MCCourseMod.COURSE_TAB)));
 
-    // DA NOTARE CHE DEVO CREARE UN OGGETTO DELLA CLASSE MagicStick che ho creato io
-    public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    // Cobalto grezzo (raw)
+    public static final RegistryObject<Item> RAW_COBALT = ITEMS.register("raw_cobalt",
+            () -> new Item(new Item.Properties().tab(MCCourseMod.COURSE_TAB)));
 
-    // Collega gli elementi creati con il ciclo di eventi di FORGE
-    public static void register(IEventBus eventBus)
-    {
+    // Spada di cobalto
+    public static final RegistryObject<Item> COBALT_SWORD = ITEMS.register("cobalt_sword",
+            () -> new CobaltSword(ModTiers.COBALT, 3, -2.4F,
+                    new Item.Properties().tab(MCCourseMod.COURSE_TAB)));
+
+    // Piccone di cobalto
+    public static final RegistryObject<Item> COBALT_PICKAXE = ITEMS.register("cobalt_pickaxe",
+            () -> new CobaltPickaxe(ModTiers.COBALT, 1, -2.8F,
+                    new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
+
+    // Magic Stick (oggetto personalizzato creato da te)
+    public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick",
+            () -> new MagicStick(new Item.Properties().tab(MCCourseMod.COURSE_TAB)));
+
+    // Metodo per collegare il registro al ciclo di eventi di Forge
+    public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
-
-    /*
-    FONDAMENTALI:
-    Creare un registro per gli oggetti → DeferredRegister<Item> serve per dire a Minecraft: “Qui registrerò i miei oggetti”.
-    Definire nuovi oggetti → ogni RegistryObject<Item> (es. COBALT_INGOT, COBALT_NUGGET) rappresenta un nuovo oggetto del gioco.
-    Organizzare gli oggetti nel menu creativo → con new Item.Properties().tab(...) si sceglie in quale sezione del menu creativo compaiono.
-    Registrare gli oggetti al gioco → il metodo register(IEventBus eventBus) collega il registro degli oggetti al ciclo di avvio del gioco.
-     */
 
 }
