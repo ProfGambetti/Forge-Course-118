@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 
 public class MCCourseMod
 {
+
     // Definisce il MOD ID
     public static final String MOD_ID = "mccourse";
 

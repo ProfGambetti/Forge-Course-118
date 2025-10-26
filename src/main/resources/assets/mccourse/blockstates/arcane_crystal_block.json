@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "mccourse:block/arcane_crystal_block" }
+  }
+}

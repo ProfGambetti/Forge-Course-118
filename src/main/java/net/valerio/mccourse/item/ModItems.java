@@ -12,7 +12,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, MCCourseMod.MOD_ID);
 
-    // Item esistenti
+    // I tuoi item esistenti
     public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
@@ -22,9 +22,12 @@ public class ModItems {
     public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick",
             () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
-    // Nuova Spada Magica - nel tab COMBAT
+    // Spada Magica
     public static final RegistryObject<Item> MAGIC_SWORD = ITEMS.register("magic_sword",
             () -> new MagicSword(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT).durability(500)));
+
+    // RIMUOVI la riga che referenzia ModBlocks da qui!
+    // I BlockItem vengono registrati automaticamente in ModBlocks
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
