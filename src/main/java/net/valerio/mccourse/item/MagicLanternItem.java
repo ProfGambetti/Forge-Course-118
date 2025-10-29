@@ -46,19 +46,22 @@ public class MagicLanternItem extends Item
         if (!(entity instanceof Player player)) return;
 
         // Verifica se l'item è effettivamente tenuto (main hand selected) oppure presente nell'offhand
-        boolean isHeld = selected || player.getOffhandItem() == stack;
-        if (!isHeld) return;
-
         UUID playerId = player.getUUID();
-        BlockPos currentPos = player.blockPosition().above();
+        BlockPos currentPos = player.blockPosition().above(); // ← aggiungi questa riga qui
 
-        // Rimuove il vecchio blocco luce se esiste (usando la map lastLightPos)
-        if (lastLightPos.containsKey(playerId)) {
-            BlockPos oldPos = lastLightPos.get(playerId);
-            if (!oldPos.equals(currentPos) && level.getBlockState(oldPos).getBlock() == Blocks.LIGHT) {
-                level.removeBlock(oldPos, false);
+        boolean isHeld = selected || player.getOffhandItem() == stack;
+
+// Se il giocatore non tiene più la lanterna, rimuovi la luce sopra la testa
+        if (!isHeld) {
+            if (lastLightPos.containsKey(playerId)) {
+                BlockPos oldPos = lastLightPos.remove(playerId);
+                if (level.getBlockState(oldPos).getBlock() == Blocks.LIGHT) {
+                    level.removeBlock(oldPos, false);
+                }
             }
+            return;
         }
+
 
         // Piazza la nuova luce sopra la testa
         level.setBlock(currentPos, Blocks.LIGHT.defaultBlockState(), 3);
