@@ -1,8 +1,18 @@
+
 {
-  "block.mccourse.cobalt_block": "Cobalt Block",
   "item.mccourse.cobalt_ingot": "Cobalt Ingot",
   "item.mccourse.cobalt_nugget": "Cobalt Nugget",
   "item.mccourse.magic_stick": "Magic Stick",
   "item.mccourse.magic_stick.used": "Hai usato il bastone magico",
   "item.mccourse.hamburger": "Hamburger Delizioso"
 }
+  "block.mccourse.cobalt_block": "Cobalt Block",
+  "item.mccourse.magic_stick.used": "Hai usato il bastone magico",
+  "item.mccourse.cobalt_helmet": "Cobalt Helmet",
+  "item.mccourse.cobalt_chestplate": "Cobalt Chestplate",
+  "item.mccourse.cobalt_leggings": "Cobalt Leggings",
+  "item.mccourse.cobalt_boots": "Cobalt Boots"
+  "item.mccourse.tree_chopper_axe": "Chopperer",
+  "item.mccourse.tunnel_pickaxe": "Excavator"
+}
+
