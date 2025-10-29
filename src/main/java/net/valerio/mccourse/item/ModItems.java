@@ -10,7 +10,7 @@ import net.valerio.mccourse.MCCourseMod;
 import net.valerio.mccourse.util.ModTiers;
 import net.valerio.mccourse.item.CobaltPickaxe;
 import net.valerio.mccourse.item.CobaltSword;
-
+//stefano
 // ModItems gestisce tutti gli item della mod e li registra al gioco
 public class ModItems {
 
