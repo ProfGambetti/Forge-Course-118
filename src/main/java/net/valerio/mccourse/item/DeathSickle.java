@@ -28,7 +28,7 @@ import net.minecraft.world.damagesource.DamageSource;
 public class DeathSickle extends Item {
 
     public DeathSickle(Properties props) {
-        super(props.durability(0));
+        super(props.durability(500));
     }
 
     @Override
@@ -83,13 +83,18 @@ public class DeathSickle extends Item {
                             target.getX(),             // coordinata X
                             target.getY(),             // coordinata Y
                             target.getZ(),             // coordinata Z
-                            6.0F,                      // potenza dell’esplosione (4.0 = TNT)
+                            4.0F,                      // potenza dell’esplosione (4.0 = TNT)
                             Explosion.BlockInteraction.NONE        // tipo di esplosione (TNT, NONE, DESTROY)
                     );
                     target.hurt(DamageSource.explosion(attacker), Float.MAX_VALUE);
                 }
-            }, 3200);//Timer dopo il quale eseguire l'esplosione(3200 = 3,20 secondi)
+            }, 5000);//Timer dopo il quale eseguire l'esplosione(5000 = 5 secondi)
         }
+
+        stack.hurtAndBreak(1,attacker,(entity) -> {
+            entity.broadcastBreakEvent(attacker.getUsedItemHand());
+        });
+
         return true;
     }
 }
