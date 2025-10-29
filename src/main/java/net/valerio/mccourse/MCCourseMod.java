@@ -14,7 +14,7 @@ import net.valerio.mccourse.command.FindCobaltCommand;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+//mod di stefano
 @Mod(MCCourseMod.MOD_ID)
 public class MCCourseMod {
     public static final String MOD_ID = "mccourse";
