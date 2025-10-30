@@ -12,7 +12,7 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
-
+//stefano
 public class CobaltOreBlock extends Block {
     public CobaltOreBlock(BlockBehaviour.Properties properties) {
         super(properties);
