@@ -16,7 +16,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 //mod di stefano Liviero
 @Mod(MCCourseMod.MOD_ID)
-public class MCCourseMod {
+
+//Commento Di Stefano Liviero
+public class MCCourseMod
+//
+public class MCCourseMod //la mod di marco parini
+{
+    // Definisce il MOD ID
     public static final String MOD_ID = "mccourse";
     private static final Logger LOGGER = LogManager.getLogger();
 
