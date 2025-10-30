@@ -16,9 +16,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 //mod di stefano Liviero
 @Mod(MCCourseMod.MOD_ID)
-
-//Commento Di Stefano Liviero
-public class MCCourseMod
 //
 public class MCCourseMod //la mod di marco parini
 {
