@@ -28,7 +28,13 @@ public class ModBlocks {
     // necessità di usare un utensile per ottenere il drop
     // Lo si inserisce nella scheda VARI (TAB_MISC) del menu creativo
     public static final RegistryObject<Block> COBALT_BLOCK = registerBlock("cobalt_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(5f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+Francesco_Lacava
+
+    public static final RegistryObject<Block> KRYPTONITE_BLOCK = registerBlock("kryptonite_block", () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(5f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+
+=======
     //Commento di Christian Rizzi
+main
     // Registra il blocco
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
