@@ -1,2 +1,4 @@
-# Tutti i file del repository richiedono approvazione del docente
+# Soltanto il docente è code owner
+# Tuttavia, una merge richiede sempre una approvazione da parte di un'altro collaboratore
+# Le merge possono essere approvate dai collaboratori NON code owners
 *   @ProfGambetti
