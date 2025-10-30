@@ -3,12 +3,17 @@ package net.valerio.mccourse.item;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.*;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.valerio.mccourse.MCCourseMod;
-
+import net.valerio.mccourse.item.Hamburger;
+import net.valerio.mccourse.item.MagicStick;
 // ModItems ha i seguenti scopi:
 //     Definisce tutti i nuovi elementi della mod (lingotti, polveri, cibi, strumenti, etc.)
 //     Registra tutti i nuovi elementi della mod
@@ -27,6 +32,9 @@ public class ModItems {
     // =========================================================================
 
     // Le prossime istruzioni creano elementi del registro, ITEM
+    public static final ArmaturaCobalto COBALT_ARMOR_MATERIAL = new ArmaturaCobalto();
+    // Le prossime due istruzioni creano due elementi del registro, due ITEM
+    // chiamati COBALT_INGOT e COBALT_NUGGET
     // Item.Properties ne definisce le caratteristiche
     // Sono aggiunte al tab "Vari" (TAB_MISC) del menu creativo
     // Il menù creativo è il pannello degli oggetti della modalità creativa di Minecraft
@@ -99,6 +107,29 @@ public class ModItems {
                     -2.8f,                 // velocità d'attacco (valori negativi = attacco più lento)
                     new Item.Properties().tab(CreativeModeTab.TAB_TOOLS) // proprietà: appare in tab strumenti
             ));
+
+    // REGISTRAZIONE DEL NUOVO HAMBURGER
+    // Crea un elemento del registro chiamato HAMBURGER
+    // Utilizza la classe Hamburger personalizzata che abbiamo creato
+    // Viene aggiunto al tab "Cibo" (TAB_FOOD) del menu creativo
+
+    public static final RegistryObject<Item> HAMBURGER = ITEMS.register("hamburger",
+            () -> new Hamburger());  // Solo questo, niente Properties qui
+    public static final RegistryObject<Item> COBALT_HELMET = ITEMS.register("cobalt_helmet",
+            () -> new ArmorItem(COBALT_ARMOR_MATERIAL, EquipmentSlot.HEAD,
+                    new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
+
+    public static final RegistryObject<Item> COBALT_CHESTPLATE = ITEMS.register("cobalt_chestplate",
+            () -> new ArmorItem(COBALT_ARMOR_MATERIAL, EquipmentSlot.CHEST,
+                    new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
+
+    public static final RegistryObject<Item> COBALT_LEGGINGS = ITEMS.register("cobalt_leggings",
+            () -> new ArmorItem(COBALT_ARMOR_MATERIAL, EquipmentSlot.LEGS,
+                    new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
+
+    public static final RegistryObject<Item> COBALT_BOOTS = ITEMS.register("cobalt_boots",
+            () -> new ArmorItem(COBALT_ARMOR_MATERIAL, EquipmentSlot.FEET,
+                    new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
