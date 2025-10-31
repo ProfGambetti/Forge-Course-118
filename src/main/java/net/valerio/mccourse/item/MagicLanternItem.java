@@ -75,19 +75,20 @@ public class MagicLanternItem extends Item
             boolean immune = immuneMap.containsKey(id) && immuneMap.get(id) > currentTick;
 
             if (!immune) {
-                monster.setSecondsOnFire(5);
+                monster.setSecondsOnFire(10);
                 immuneMap.put(id, currentTick + 600);
             }
         });
 
         // Durabilità: perde 1 punto ogni 2 minuti (2400 tick)
         int tick = (int) level.getGameTime();
-        if (tick % 2400 == 0) {
+        if (tick % 1300 == 0) {
             stack.hurt(1, player.getRandom(), null);
         }
 
         // Se si rompe
         if (stack.getDamageValue() >= stack.getMaxDamage()) {
+            boolean text = true;
             // rimuove l'ultimo blocco luce
             BlockPos last = lastLightPos.remove(playerId);
             if (last != null && level.getBlockState(last).getBlock() == Blocks.LIGHT) {
@@ -99,6 +100,7 @@ public class MagicLanternItem extends Item
             player.broadcastBreakEvent(player.getUsedItemHand());
 
             // messaggio in chat
+            if (text)
             player.displayClientMessage(new net.minecraft.network.chat.TextComponent("Fiamma spenta!"), true);
         }
     }
