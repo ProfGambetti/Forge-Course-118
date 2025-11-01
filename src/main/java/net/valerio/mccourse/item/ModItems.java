@@ -1,19 +1,18 @@
 package net.valerio.mccourse.item;
 
-import net.minecraft.tags.BlockTags;
+import net.filippo.mccourse.items.TreeChopperAxe;
+import net.filippo.mccourse.items.TunnelPickaxeItem;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.*;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.valerio.mccourse.MCCourseMod;
-import net.valerio.mccourse.item.Hamburger;
-import net.valerio.mccourse.item.MagicStick;
+
 // ModItems ha i seguenti scopi:
 //     Definisce tutti i nuovi elementi della mod (lingotti, polveri, cibi, strumenti, etc.)
 //     Registra tutti i nuovi elementi della mod
@@ -31,6 +30,14 @@ public class ModItems {
     // REGISTRAZIONE ITEMS
     // =========================================================================
 
+    // Due oggetti di Filippo
+    public static final RegistryObject<Item> TREE_CHOPPER_AXE = ITEMS.register("tree_chopper_axe",
+            TreeChopperAxe::new);
+
+    public static final RegistryObject<Item> TUNNEL_PICKAXE = ITEMS.register("tunnel_pickaxe",
+            () -> new TunnelPickaxeItem(Tiers.DIAMOND, 1, -2.8F,
+                    new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
+
     // Le prossime istruzioni creano elementi del registro, ITEM
     public static final ArmaturaCobalto COBALT_ARMOR_MATERIAL = new ArmaturaCobalto();
     // Le prossime due istruzioni creano due elementi del registro, due ITEM
@@ -45,7 +52,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     // DA NOTARE CHE DEVO CREARE UN OGGETTO DELLA CLASSE MagicStick che ho creato io
-    public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+  //  public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final RegistryObject<Item> BRUSH = ITEMS.register("brush", () -> new Brush(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick",
             () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
