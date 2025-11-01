@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 
@@ -53,12 +54,17 @@ public class MagicStick extends Item {
 
                             // Rimuove l'entità colpita
                             target.discard();
-
+                            /*
                             // Sostituisce con un blocco d'oro
                             world.setBlock(pos, Blocks.GOLD_BLOCK.defaultBlockState(), 3);
+                            */
+                            // Sostituisce con un blocco presente nella classe MagicStickConfig
+                            MagicStickConfig.loadConfig();
+                            Block targetBlock = MagicStickConfig.getBlockToUse();
+                            world.setBlock(pos, targetBlock.defaultBlockState(), 3);
 
                             // Messaggio al giocatore
-                            player.displayClientMessage(new TextComponent("✨ Hai trasformato un nemico in oro a distanza!"), true);
+                            player.displayClientMessage(new TextComponent("✨ Hai trasformato un nemico in un blocco a tua scelta!"), true);
                         }
                     }
                     // Rimuovi il proiettile dopo l'impatto
@@ -96,7 +102,7 @@ public class MagicStick extends Item {
 
         return InteractionResultHolder.success(stack);
     }
-
+    /*
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (!attacker.level.isClientSide) {
@@ -117,4 +123,6 @@ public class MagicStick extends Item {
 
         return true;
     }
+
+     */
 }
