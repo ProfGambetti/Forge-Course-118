@@ -63,10 +63,9 @@ public class MCCourseMod //la mod di marco parini
     // FORGE chiama questo metodo in fase di pre-inizializzazione della mod
     private void setup(final FMLCommonSetupEvent event)
     {
-        // Stampo semplicemente due messaggi, nel secondo stampa il nome del blocco terra
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-    }
+        // Stampo semplicemente un messaggio di benvenuto
+        LOGGER.info("Questa è la MOD della 4Ci a.s. 2025-2026 IIS Belluzzi-Fioravanti di Bologna");
+            }
 
     // FONDAMENTALI:
     /*
