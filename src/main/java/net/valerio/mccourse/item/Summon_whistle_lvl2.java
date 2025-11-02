@@ -25,10 +25,6 @@ public class Summon_whistle_lvl2 extends Item{
 
 
 
-    // durata di vita dei mob evocati in tick (20 tick = 1 secondo)
-    private static final long LIFETIME_TICKS = 20L * 20L; // 20 secondi
-
-
     private static final EntityType<?>[] HOSTILE_MOBS = {
             EntityType.ZOMBIE,
             EntityType.SKELETON,
@@ -52,8 +48,12 @@ public class Summon_whistle_lvl2 extends Item{
                             player.getZ() + random.nextInt(6) - 3,
                             0, 0);
 
-                    //Permetti il despawn naturale
-                    mob.getPersistentData().putLong("whistle_spawn_time", level.getGameTime());
+
+                    // Aggiungi tag identificativo
+                    mob.addTag("summoned_by_whistle");
+
+                    makeMobFriendlyToPlayer(mob);
+
 
                     //Impedisci che attacchi gli altri mob generati
                     mob.addTag("summoned_by_whistle");
@@ -74,4 +74,27 @@ public class Summon_whistle_lvl2 extends Item{
         }
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide());
     }
+
+
+
+    /**
+     * Questo metodo cambia il comportamento dei mob spawnati in maniera di renderli pacifici verso il giocatore.
+     * Cambia l'ostilita` dei mob ad escludere il giocatore, ma uccidere qualsiasi altro mob nelle vicinanze.
+     */
+    private void makeMobFriendlyToPlayer(Mob mob) {
+        // Rimuove gli "obbiettivi "
+        mob.targetSelector.removeAllGoals();
+
+        // Re-add only custom targeting logic that ignores players
+        mob.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(mob, Mob.class, 10, true, false, (target) -> {
+
+            return !(target instanceof Player) && !target.getTags().contains("summoned_by_whistle");
+        }));
+
+        // Clear any current player target if one exists
+        if (mob.getTarget() instanceof Player) {
+            mob.setTarget(null);
+        }
+    }
+
 }
