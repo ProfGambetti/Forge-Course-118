@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 //ccommmento di micolRRIGHIii
 //Commento Di Stefano Liviero
 //
-public class MCCourseMod //la mod di marco parini
+public class MCCourseMod // la mod di marco parini
 {
     // Definisce il MOD ID
     //ciao guys1

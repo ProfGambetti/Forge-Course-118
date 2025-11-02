@@ -133,13 +133,23 @@ public class ModItems {
             () -> new ArmorItem(COBALT_ARMOR_MATERIAL, EquipmentSlot.FEET,
                     new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 
+
+
+    //aggiungendo l'oggetto "Summon whistle"
+    public static final RegistryObject<Item> SUMMON_WHISTLE = ITEMS.register("summon_whistle", () -> new SummonWhistle(new Item.Properties().tab(CreativeModeTab.TAB_TOOLS)));
+
+    //aggiungendo l'oggetto "Summon whistle"
+    public static final RegistryObject<Item> SUMMON_WHISTLE_LVL2 = ITEMS.register("summon_whistle_lvl2", () -> new Summon_whistle_lvl2(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
+
+
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
     {
         ITEMS.register(eventBus);
     }
 
-    /**
+
+    /*
     FONDAMENTALI:
     Creare un registro per gli oggetti → DeferredRegister<Item> serve per dire a Minecraft: "Qui registrerò i miei oggetti".
     Definire nuovi oggetti → ogni RegistryObject<Item> (es. COBALT_INGOT, COBALT_NUGGET) rappresenta un nuovo oggetto del gioco.
@@ -148,3 +158,5 @@ public class ModItems {
      */
 
 }
+
+
