@@ -1,5 +1,7 @@
-package net.valerio.mccourse;
 
+//ziad chihab 4CI
+package net.valerio.mccourse;
+//Andrea Balestra 4Ci
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,12 +27,15 @@ import java.util.stream.Collectors;
 // L'annotazione @Mod comunica a Forge che questa è la classe principale della MOD
 @Mod(MCCourseMod.MOD_ID)
 
+//ccommmento di micolRRIGHIii
+//Commento Di Stefano Liviero
 //
 public class MCCourseMod // la mod di marco parini
 {
     // Definisce il MOD ID
+    //ciao guys1
     public static final String MOD_ID = "mccourse";
-
+//ciao
     // Stampa i messaggi di LOG
     private static final Logger LOGGER = LogManager.getLogger();
     // Test change for GIT version 2
@@ -38,10 +43,12 @@ public class MCCourseMod // la mod di marco parini
     // Third committ
     public MCCourseMod() {
 
+
         // Carico il sistema di eventi Forge, chiamato eventBus
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Registro items e blocchi
+
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
         System.out.println("Ho registrato blocchi ed eventi in MCCourseMod.java");
