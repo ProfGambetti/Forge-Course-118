@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "mccourse:cobalt_ingot"
+    }
+  },
+  "result": {
+    "item": "mccourse:block_of_cobalt",
+    "count": 1
+  }
+}
