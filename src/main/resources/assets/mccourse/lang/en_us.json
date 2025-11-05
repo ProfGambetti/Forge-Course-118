@@ -9,7 +9,11 @@
   "item.mccourse.death_sickle" : "Death Sickle",
   "item.mccourse.magic_stick.used": "Hai usato il bastone magico"
 }
+  "item.mccourse.magic_stick": "Magic Stick", 
   "item.mccourse.magic_stick.used": "Hai usato il bastone magico",
+  "item.mccourse.knockback_sword": "KnockBack Sword",
+  "item.mccourse.knockback_sword.used": "Hai usato la spada con Knockback"
+}
   "item.mccourse.summon_whistle": "Summon Whistle",
   "item.mccourse.summon_whistle_lvl2": "Summon Whistle lvl2"
 }

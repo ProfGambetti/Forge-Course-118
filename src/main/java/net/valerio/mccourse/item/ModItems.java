@@ -12,6 +12,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.valerio.mccourse.MCCourseMod;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 // ModItems ha i seguenti scopi:
 //     Definisce tutti i nuovi elementi della mod (lingotti, polveri, cibi, strumenti, etc.)
@@ -154,6 +157,13 @@ public class ModItems {
 
 
     public static final RegistryObject<Item> DEATH_SICKLE = ITEMS.register("death_sickle", () -> new DeathSickle(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+    public static final RegistryObject<Item> MAGICLANTERNITEM = ITEMS.register("magic_lantern", () -> new net.valerio.mccourse.item.MagicLanternItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    // Registriamo la nostra spada personalizzata
+    // "knockback_sword" sarà il nome interno dell'item
+    // RegistryObject è un wrapper che ci dà accesso sicuro al nostro item registrato
+    public static final RegistryObject<Item> KNOCKBACK_SWORD = ITEMS.register("knockback_sword",
+            () -> new KnockbackSword()); // Lambda che crea una nuova istanza quando serve
 
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
@@ -169,6 +179,20 @@ public class ModItems {
     Organizzare gli oggetti nel menu creativo → con new Item.Properties().tab(...) si sceglie in quale sezione del menu creativo compaiono.
     Registrare gli oggetti al gioco → il metodo register(IEventBus eventBus) collega il registro degli oggetti al ciclo di avvio del gioco.
      */
+
+    public class MagicLanternItem extends Item
+    {
+        private final Map<UUID, Integer> immuneMap = new HashMap<>();
+        public MagicLanternItem(Properties props)
+        {
+            super(props);
+        }
+
+        public static final RegistryObject<Item> MAGIC_LANTERN = ITEMS.register("magic_lantern",
+                () -> new net.valerio.mccourse.item.MagicLanternItem(new Item.Properties().stacksTo(1).durability(36000)));
+
+    }
+
 
 }
 

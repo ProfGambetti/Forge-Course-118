@@ -32,6 +32,7 @@ import java.util.stream.Collectors;
 //Commento Di Stefano Liviero
                                                 // ragazzi vi stimo (magari noi di 5ai facessimo sta roba)
                                                 // gregtech new horizons best modpack btw
+
 public class MCCourseMod //la mod di marco parini
 {
     // Definisce il MOD ID
