@@ -149,6 +149,12 @@ public class ModItems {
     public static final RegistryObject<Item> SUMMON_WHISTLE_LVL2 = ITEMS.register("summon_whistle_lvl2", () -> new Summon_whistle_lvl2(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 
 
+    // Registriamo la nostra spada personalizzata
+    // "knockback_sword" sarà il nome interno dell'item
+    // RegistryObject è un wrapper che ci dà accesso sicuro al nostro item registrato
+    public static final RegistryObject<Item> KNOCKBACK_SWORD = ITEMS.register("knockback_sword",
+            () -> new KnockbackSword()); // Lambda che crea una nuova istanza quando serve
+
     // Collega gli elementi creati con il ciclo di eventi di FORGE
     public static void register(IEventBus eventBus)
     {
