@@ -54,6 +54,10 @@ public class ModItems {
     public static final RegistryObject<Item> COBALT_NUGGET = ITEMS.register("cobalt_nugget",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+    public static final RegistryObject<Item> KRYPTONITE_INGOT = ITEMS.register("kryptonite_ingot", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+        public static final RegistryObject<Item> KRYPTONITE_NUGGET = ITEMS.register("kryptonite_nugget", () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
     // DA NOTARE CHE DEVO CREARE UN OGGETTO DELLA CLASSE MagicStick che ho creato io
   //  public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick", () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final RegistryObject<Item> BRUSH = ITEMS.register("brush", () -> new Brush(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
@@ -152,6 +156,7 @@ public class ModItems {
     public static final RegistryObject<Item> SUMMON_WHISTLE_LVL2 = ITEMS.register("summon_whistle_lvl2", () -> new Summon_whistle_lvl2(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT)));
 
 
+    public static final RegistryObject<Item> DEATH_SICKLE = ITEMS.register("death_sickle", () -> new DeathSickle(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     public static final RegistryObject<Item> MAGICLANTERNITEM = ITEMS.register("magic_lantern", () -> new net.valerio.mccourse.item.MagicLanternItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     // Registriamo la nostra spada personalizzata

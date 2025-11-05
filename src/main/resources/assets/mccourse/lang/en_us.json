@@ -2,6 +2,13 @@
 {
   "item.mccourse.cobalt_ingot": "Cobalt Ingot",
   "item.mccourse.cobalt_nugget": "Cobalt Nugget",
+  "item.mccourse.magic_stick": "Magic Stick",
+  "block.mccourse.kryptonite_block": "Kryptonite Block",
+  "item.mccourse.kryptonite_ingot": "Kryptonite Ingot",
+  "item.mccourse.kryptonite_nugget": "Kryptonite Nugget",
+  "item.mccourse.death_sickle" : "Death Sickle",
+  "item.mccourse.magic_stick.used": "Hai usato il bastone magico"
+}
   "item.mccourse.magic_stick": "Magic Stick", 
   "item.mccourse.magic_stick.used": "Hai usato il bastone magico",
   "item.mccourse.knockback_sword": "KnockBack Sword",
