@@ -1,9 +1,12 @@
+
 {
-  "block.mccourse.cobalt_block": "Cobalt Block",
   "item.mccourse.cobalt_ingot": "Cobalt Ingot",
   "item.mccourse.cobalt_nugget": "Cobalt Nugget",
-  "item.mccourse.magic_stick": "Magic Stick",
+  "item.mccourse.magic_stick": "Magic Stick", 
   "item.mccourse.magic_stick.used": "Hai usato il bastone magico",
   "item.mccourse.knockback_sword": "KnockBack Sword",
   "item.mccourse.knockback_sword.used": "Hai usato la spada con Knockback"
+}
+  "item.mccourse.summon_whistle": "Summon Whistle",
+  "item.mccourse.summon_whistle_lvl2": "Summon Whistle lvl2"
 }
