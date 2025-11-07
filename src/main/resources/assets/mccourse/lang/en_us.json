@@ -1,7 +1,8 @@
 {
-  "block.mccourse.cobalt_block": "Cobalt Block",
+  "item.mccourse.magic_sword": "Magic Sword",
   "item.mccourse.cobalt_ingot": "Cobalt Ingot",
   "item.mccourse.cobalt_nugget": "Cobalt Nugget",
   "item.mccourse.magic_stick": "Magic Stick",
-  "item.mccourse.magic_stick.used": "Hai usato il bastone magico"
+  "block.mccourse.arcane_crystal_block": "Arcane Crystal Block",
+  "item.mccourse.arcane_crystal_block": "Arcane Crystal Block"
 }
