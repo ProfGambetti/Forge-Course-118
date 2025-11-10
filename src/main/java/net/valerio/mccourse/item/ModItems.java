@@ -16,19 +16,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-// ModItems ha i seguenti scopi:
-//     Definisce tutti i nuovi elementi della mod (lingotti, polveri, cibi, strumenti, etc.)
-//     Registra tutti i nuovi elementi della mod
-//     Collega gli oggetti al sistema degli eventi FORGE chiamato EVENT BUS
 public class ModItems {
-
-    // Crea un registro di oggetti per la MOD all'interno del registro globale di Minecraft
-    // MOD_ID è una stringa univoca della MOD scelta dal modder
-    // che deve essere presenta nel file mods.toml
-    // tutta minuscola e senza spazi
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, MCCourseMod.MOD_ID);
 
+    // I tuoi item esistenti
+    public static final RegistryObject<Item> COBALT_INGOT = ITEMS.register("cobalt_ingot",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> COBALT_NUGGET = ITEMS.register("cobalt_nugget",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> MAGIC_STICK = ITEMS.register("magic_stick",
+            () -> new MagicStick(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     // =========================================================================
     // REGISTRAZIONE ITEMS
     // =========================================================================
@@ -165,12 +165,17 @@ public class ModItems {
     public static final RegistryObject<Item> KNOCKBACK_SWORD = ITEMS.register("knockback_sword",
             () -> new KnockbackSword()); // Lambda che crea una nuova istanza quando serve
 
-    // Collega gli elementi creati con il ciclo di eventi di FORGE
-    public static void register(IEventBus eventBus)
-    {
+    // Spada Magica
+    public static final RegistryObject<Item> MAGIC_SWORD = ITEMS.register("magic_sword",
+            () -> new MagicSword(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT).durability(500)));
+
+    // RIMUOVI la riga che referenzia ModBlocks da qui!
+    // I BlockItem vengono registrati automaticamente in ModBlocks
+
+    public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
-
+}
 
     /*
     FONDAMENTALI:
